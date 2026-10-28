@@ -17,7 +17,7 @@ graph TD
 
     Q2{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>< Pollution intérieure ?"}:::sante
     Q2 -- "OUI (L'extérieur est meilleur)" --> A1["🚨 NOTIFICATION : Il FAUT aérer !<br>Action : Ouvrir les fenêtres.<br>🔴 LED : ROUGE"]:::actVert
-    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer purificateur d'air.<br>🔴 LED : ROUGE"]:::actRouge
+    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer purificateur d'air.<br>🔴 LED : ORANGE"]:::actRouge
 
     Q3{"[DHT22]<br>Inconfort INTÉRIEUR ?<br>(T° > 26°C ou HR > 60% / < 40%)"}:::confort
     Q3 -- "OUI (Inconfort détecté)" --> Q4
@@ -28,7 +28,7 @@ graph TD
     Q4b -- "NON (Air extérieur propre)" --> A3["✅ NOTIFICATION : Vous POUVEZ aérer.<br>Action : Réguler l'humidité/T°.<br>🟢 LED : VERT"]:::actVert
     Q4b -- "OUI (Air extérieur pollué)" --> A4["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Santé > Confort.<br>🔵 LED : BLEU"]:::actRouge
     
-    Q4 -- "NON (Il fait pire dehors)" --> A5["🔒 NOTIFICATION : Maintenir fermé.<br>Action : VMC / Clim / Chauffage."]:::actGris
+    Q4 -- "NON (Il fait pire dehors)" --> A5["🔒 NOTIFICATION : Maintenir fermé.<br>Action : VMC / Clim / Chauffage.<br>🔵 LED : BLEU"]:::actGris
 
     Q5{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
     Q5 -- "OUI (Pic de pollution dehors)" --> A6["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Action : Restez calfeutré.<br>🔵 LED : BLEU"]:::actRouge
