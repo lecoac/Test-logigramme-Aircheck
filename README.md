@@ -1,6 +1,7 @@
 # Test-logigramme-Aircheck
 Logigramme Aircheck
 
+```mermaid
 graph TD
     %% Définition des classes de couleurs
     classDef sante fill:#f4ecf7,stroke:#8e44ad,stroke-width:2px; %% Violet pour SPS30/SGP41
