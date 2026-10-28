@@ -2,5 +2,39 @@
 Logigramme Aircheck
 
 ```mermaid
-  info
+graph TD
+    %% Définition des classes de couleurs
+    classDef sante fill:#f4ecf7,stroke:#8e44ad,stroke-width:2px; %% Violet pour SPS30/SGP41
+    classDef confort fill:#ebf5fb,stroke:#2980b9,stroke-width:2px; %% Bleu pour DHT22
+    classDef actVert fill:#abebc6,stroke:#239b56,stroke-width:2px; %% Vert pour Aérer
+    classDef actRouge fill:#f5b7b1,stroke:#c0392b,stroke-width:2px; %% Rouge pour Ne pas aérer
+    classDef actGris fill:#f2f3f4,stroke:#7f8c8d,stroke-width:2px; %% Gris pour Neutre
+
+    Start([Début du cycle de mesure]) --> Q1
+
+    %% --- BLOC 1 : LA SANTÉ AVANT TOUT (SPS30 & SGP41) ---
+    Q1{"[SPS30 & SGP41]<br>Pollution INTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
+    Q1 -- "OUI (Air intérieur vicié)" --> Q2
+    Q1 -- "NON (Air intérieur sain)" --> Q3
+
+    Q2{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>< Pollution intérieure ?"}:::sante
+    Q2 -- "OUI (L'extérieur est meilleur)" --> A1["🚨 NOTIFICATION : Il FAUT aérer !<br>Action : Ouvrir les fenêtres pour évacuer la pollution."]:::actVert
+    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Garder fermé et activer le purificateur d'air."]:::actRouge
+
+    %% --- BLOC 2 : LE CONFORT THERMIQUE (DHT22) ---
+    Q3{"[DHT22]<br>Inconfort INTÉRIEUR ?<br>(T° > 26°C ou HR > 60% / < 40%)"}:::confort
+    Q3 -- "OUI (Inconfort détecté)" --> Q4
+    Q3 -- "NON (Confort optimal)" --> Q5
+
+    Q4{"[DHT22]<br>L'air EXTÉRIEUR<br>améliore-t-il le confort ?<br>(ex: plus frais en été)"}:::confort
+    Q4 -- "OUI" --> Q4b{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
+    Q4b -- "NON (Air extérieur propre)" --> A3["✅ NOTIFICATION : Vous POUVEZ aérer.<br>Action : Ouvrir pour rafraîchir / réguler l'humidité."]:::actVert
+    Q4b -- "OUI (Air extérieur pollué)" --> A4["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Action : Confort ignoré pour préserver la santé."]:::actRouge
+    
+    Q4 -- "NON (Il fait pire dehors)" --> A5["🔒 NOTIFICATION : Maintenir fermé.<br>Action : Activer VMC / Clim / Chauffage."]:::actGris
+
+    %% --- BLOC 3 : LA PRÉVENTION (Vérification finale) ---
+    Q5{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
+    Q5 -- "OUI (Pic de pollution dehors)" --> A6["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Action : Restez calfeutré en prévention."]:::actRouge
+    Q5 -- "NON (Tout est propre)" --> A7["✨ NOTIFICATION : Tout est OK !<br>Action : Aucune. Aération optionnelle."]:::actGris
 ```
