@@ -2,5 +2,5 @@
 Logigramme Aircheck
 
 ```mermaid
-infos
+  info
 ```
