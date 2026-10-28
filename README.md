@@ -17,7 +17,7 @@ graph TD
 
     Q2{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>< Pollution intérieure ?"}:::sante
     Q2 -- "OUI (L'extérieur est meilleur)" --> A1["🚨 NOTIFICATION : Il FAUT aérer !<br>Action : Ouvrir les fenêtres.<br>🔴 LED : ROUGE"]:::actVert
-    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer purificateur d'air.<br>🔴 LED : ORANGE"]:::actRouge
+    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer purificateur d'air.<br> 🟠 LED : ORANGE"]:::actRouge
 
     Q3{"[DHT22]<br>Inconfort INTÉRIEUR ?<br>(T° > 26°C ou HR > 60% / < 40%)"}:::confort
     Q3 -- "OUI (Inconfort détecté)" --> Q4
