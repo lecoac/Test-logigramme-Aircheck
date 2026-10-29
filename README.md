@@ -5,7 +5,7 @@ Logigramme Aircheck
 graph TD
     classDef sante fill:#f4ecf7,stroke:#8e44ad,stroke-width:2px,color:#000;
     classDef confort fill:#ebf5fb,stroke:#2980b9,stroke-width:2px,color:#000;
-    classDef equip fill:#fcf3cf,stroke:#f1c40f,stroke-width:2px,color:#000; %% Jaune pour les équipements
+    classDef equip fill:#fcf3cf,stroke:#f1c40f,stroke-width:2px,color:#000;
     classDef actVert fill:#abebc6,stroke:#239b56,stroke-width:2px,color:#000;
     classDef actRouge fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000;
     classDef actGris fill:#f2f3f4,stroke:#7f8c8d,stroke-width:2px,color:#000;
