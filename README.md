@@ -26,7 +26,7 @@ graph TD
     Q4{"[DHT22]<br>L'air EXTÉRIEUR<br>améliore-t-il le confort ?"}:::confort
     Q4 -- "OUI" --> Q4b{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
     Q4b -- "NON (Air extérieur propre)" --> A3["✅ NOTIFICATION : Vous POUVEZ aérer.<br>Action : Réguler l'humidité/T°.<br>🟢 LED : VERT"]:::actVert
-    Q4b -- "OUI (Air extérieur pollué)" --> A4["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Santé > Confort.<br>🔵 LED : BLEU"]:::actRouge
+    Q4b -- "OUI (Air extérieur pollué)" --> A4["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Santé > Confort.<br>🟠 LED : ORANGE"]:::actRouge
     
     Q4 -- "NON (Il fait pire dehors)" --> A5["🔒 NOTIFICATION : Maintenir fermé.<br>Action : VMC / Clim / Chauffage.<br>🔵 LED : BLEU"]:::actGris
 
@@ -61,18 +61,22 @@ Quand l'air est très humide, la sueur s'évapore moins bien. Le corps humain n'
 On utilise la formule météorologique de Magnus-Tetens pour déterminer le point de condensation. 
 
 **Étape A : Calcul de la variable intermédiaire $\alpha$**
+
 $\alpha = \frac{17,27 \times T}{237,7 + T} + \ln\left(\frac{HR}{100}\right)$
 
 **Étape B : Calcul de la Température de rosée ($T_d$ en °C)**
+
 $T_d = \frac{237,7 \times \alpha}{17,27 - \alpha}$
 
 ### 2. Calcul de l'Humidex (Température ressentie)
 À partir de la température et de l'humidité, on détermine la pression de vapeur d'eau ($e$ en hPa), puis on calcule l'indice Humidex.
 
 **Calcul de la pression de vapeur d'eau ($e$) :**
+
 $e = 6,112 \times 10^{\left( \frac{7,5 \times T_d}{237,7 + T_d} \right)}$
 
 **Formule finale de l'Humidex ($H$) :**
+
 $H = T + 0,5555 \times (e - 10)$
 
 **Interprétation du résultat Humidex par le logiciel :**
