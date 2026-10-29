@@ -64,22 +64,16 @@ On utilise la formule météorologique de Magnus-Tetens pour déterminer le poin
 ![equation](https://fxtex.codecogs.com/svg.image?%5Cusepackage%7Bmhchem%2Cchemfig%2Cpicture%7D%5Calpha%3D%5Cfrac%7B17%2C27%20%5Ctimes%20T%7D%7B237%2C7%2BT%7D%2B%5Cln%5Cleft%28%5Cfrac%7BHR%7D%7B100%7D%5Cright%29)
 
 **Étape B : Calcul de la Température de rosée ($T_d$ en °C)**
-$$
-T_d = \frac{237,7 \times \alpha}{17,27 - \alpha}
-$$
+$T_d = \frac{237,7 \times \alpha}{17,27 - \alpha}$
 
 ### 2. Calcul de l'Humidex (Température ressentie)
 À partir de la température et de l'humidité, on détermine la pression de vapeur d'eau ($e$ en hPa), puis on calcule l'indice Humidex.
 
 **Calcul de la pression de vapeur d'eau ($e$) :**
-$$
-e = 6,112 \times 10^{\left( \frac{7,5 \times T_d}{237,7 + T_d} \right)}
-$$
+$e = 6,112 \times 10^{\left( \frac{7,5 \times T_d}{237,7 + T_d} \right)}$
 
 **Formule finale de l'Humidex ($H$) :**
-$$
-H = T + 0,5555 \times (e - 10)
-$$
+$H = T + 0,5555 \times (e - 10)$
 
 **Interprétation du résultat Humidex par le logiciel :**
 *   **H < 29 :** Aucun inconfort (Zone verte).
