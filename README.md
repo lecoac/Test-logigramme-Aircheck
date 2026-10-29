@@ -5,6 +5,7 @@ Logigramme Aircheck
 graph TD
     classDef sante fill:#f4ecf7,stroke:#8e44ad,stroke-width:2px,color:#000;
     classDef confort fill:#ebf5fb,stroke:#2980b9,stroke-width:2px,color:#000;
+    classDef equip fill:#fcf3cf,stroke:#f1c40f,stroke-width:2px,color:#000; %% Jaune pour les équipements
     classDef actVert fill:#abebc6,stroke:#239b56,stroke-width:2px,color:#000;
     classDef actRouge fill:#f5b7b1,stroke:#c0392b,stroke-width:2px,color:#000;
     classDef actGris fill:#f2f3f4,stroke:#7f8c8d,stroke-width:2px,color:#000;
@@ -17,7 +18,11 @@ graph TD
 
     Q2{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>< Pollution intérieure ?"}:::sante
     Q2 -- "OUI (L'extérieur est meilleur)" --> A1["🚨 NOTIFICATION : Il FAUT aérer !<br>Action : Ouvrir les fenêtres.<br>🔴 LED : ROUGE"]:::actVert
-    Q2 -- "NON (L'extérieur est pire)" --> A2["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer purificateur d'air.<br> 🟠 LED : ORANGE"]:::actRouge
+    Q2 -- "NON (L'extérieur est pire)" --> Eq1
+    
+    Eq1{"[ÉQUIPEMENT]<br>Purificateur d'air<br>disponible ?"}:::equip
+    Eq1 -- "OUI" --> A2a["❌ NOTIFICATION : NE PAS aérer !<br>Action : Activer le purificateur d'air.<br>🟠 LED : ORANGE"]:::actRouge
+    Eq1 -- "NON" --> A2b["❌ NOTIFICATION : NE PAS aérer !<br>Action : Maintenir fermé (Isoler).<br>🟠 LED : ORANGE"]:::actRouge
 
     Q3{"[DHT22]<br>Inconfort INTÉRIEUR ?<br>(T° > 26°C ou HR > 60% / < 40%)"}:::confort
     Q3 -- "OUI (Inconfort détecté)" --> Q4
@@ -28,7 +33,11 @@ graph TD
     Q4b -- "NON (Air extérieur propre)" --> A3["✅ NOTIFICATION : Vous POUVEZ aérer.<br>Action : Réguler l'humidité/T°.<br>🟢 LED : VERT"]:::actVert
     Q4b -- "OUI (Air extérieur pollué)" --> A4["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Santé > Confort.<br>🟠 LED : ORANGE"]:::actRouge
     
-    Q4 -- "NON (Il fait pire dehors)" --> A5["🔒 NOTIFICATION : Maintenir fermé.<br>Action : VMC / Clim / Chauffage.<br>🔵 LED : BLEU"]:::actGris
+    Q4 -- "NON (Il fait pire dehors)" --> Eq2
+    
+    Eq2{"[ÉQUIPEMENT]<br>VMC ou Climatisation<br>disponible ?"}:::equip
+    Eq2 -- "OUI" --> A5a["🔒 NOTIFICATION : Maintenir fermé.<br>Action : Activer VMC / Clim.<br>🔵 LED : BLEU"]:::actGris
+    Eq2 -- "NON" --> A5b["🔒 NOTIFICATION : Maintenir fermé.<br>Action : Aucune (Attendre).<br>🔵 LED : BLEU"]:::actGris
 
     Q5{"[SPS30 & SGP41]<br>Pollution EXTÉRIEURE<br>> Seuils d'alerte ?"}:::sante
     Q5 -- "OUI (Pic de pollution dehors)" --> A6["⚠️ NOTIFICATION : DÉCONSEILLÉ d'aérer.<br>Action : Restez calfeutré.<br>🔵 LED : BLEU"]:::actRouge
