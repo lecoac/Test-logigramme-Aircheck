@@ -61,9 +61,7 @@ Quand l'air est très humide, la sueur s'évapore moins bien. Le corps humain n'
 On utilise la formule météorologique de Magnus-Tetens pour déterminer le point de condensation. 
 
 **Étape A : Calcul de la variable intermédiaire $\alpha$**
-$$
-\alpha = \frac{17,27 \times T}{237,7 + T} + \ln\left(\frac{HR}{100}\right)
-$$
+https://fxtex.codecogs.com/svg.image?%5Cusepackage%7Bmhchem%2Cchemfig%2Cpicture%7D%5Calpha%3D%5Cfrac%7B17%2C27%20%5Ctimes%20T%7D%7B237%2C7%2BT%7D%2B%5Cln%5Cleft%28%5Cfrac%7BHR%7D%7B100%7D%5Cright%29
 
 **Étape B : Calcul de la Température de rosée ($T_d$ en °C)**
 $$
